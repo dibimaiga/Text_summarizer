@@ -5,3 +5,8 @@ data_ingestion:
   source_URL: https://github.com/entbappy/Branching-tutorial/raw/master/summarizer-data.zip
   local_data_file: artefacts/data_ingestion/data.zip
   unzip_dir: artefacts/data_ingestion
+
+data_validation:
+  root_dir: artefacts/data_validation
+  status_file: artefacts/data_validation/status.txt
+  all_required_files: ["train", "test", "validation"]
