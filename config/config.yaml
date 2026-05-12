@@ -10,3 +10,20 @@ data_validation:
   root_dir: artefacts/data_validation
   status_file: artefacts/data_validation/status.txt
   all_required_files: ["train", "test", "validation"]
+
+data_transformation:
+  root_dir: artefacts/data_transformation
+  data_path: artefacts/data_ingestion/samsum_dataset
+  tokenizer_name: google/pegasus-cnn_dailymail
+
+model_trainer:
+  root_dir: artefacts/model_trainer
+  data_path: artefacts/data_transformation/samsum_dataset
+  model_checkpoint: google/pegasus-cnn_dailymail
+
+model_evaluation:
+  root_dir: artefacts/model_evaluation
+  data_path: artefacts/data_transformation/samsum_dataset
+  model_path: artefacts/model_trainer/pegasus-samsum-model
+  tokenizer_path: artefacts/model_trainer/tokenizer
+  metrics_file: artefacts/model_evaluation/metrics.csv

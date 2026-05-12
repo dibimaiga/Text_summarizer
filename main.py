@@ -1,5 +1,10 @@
+from TextSummarizationProject.components.data_transformation import DataTransformation
 from TextSummarizationProject.pipeline.stage_01_data_ingestion import DataIngestionPipeline
 from TextSummarizationProject.pipeline.stage_02_data_validation import DataValidationPipeline
+from TextSummarizationProject.pipeline.stage_03_data_transformation import DataTransformationPipeline
+from TextSummarizationProject.pipeline.stage_04_model_trainer import ModelTrainerPipeline
+from TextSummarizationProject.pipeline.stage_05_model_evaluation import ModelEvaluationPipeline
+
 from TextSummarizationProject.logging import logger
 
 STAGE_NAME = "Data Ingestion Stage"
@@ -18,6 +23,36 @@ try:
     data_validation_pipeline = DataValidationPipeline()
     data_validation_pipeline.main()
     logger.info(f">>>>>>> Stage {STAGE_NAME} completed <<<<<<<<\n\nx==========x") 
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+STAGE_NAME = "Data Transformation Stage"
+try:
+    logger.info(f">>>>>>> Stage {STAGE_NAME} started <<<<<<<<")
+    data_transformation_pipeline = DataTransformationPipeline()
+    data_transformation_pipeline.main()
+    logger.info(f">>>>>>> Stage {STAGE_NAME} completed <<<<<<<<\n\nx==========x")
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+STAGE_NAME = "Model Trainer Stage"
+try:
+    logger.info(f">>>>>>> Stage {STAGE_NAME} started <<<<<<<<")
+    model_trainer_pipeline = ModelTrainerPipeline()
+    model_trainer_pipeline.main()
+    logger.info(f">>>>>>> Stage {STAGE_NAME} completed <<<<<<<<\n\nx==========x")
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+STAGE_NAME = "Model Evaluation Stage"
+try:
+    logger.info(f">>>>>>> Stage {STAGE_NAME} started <<<<<<<<")
+    model_evaluation_pipeline = ModelEvaluationPipeline()
+    model_evaluation_pipeline.main()
+    logger.info(f">>>>>>> Stage {STAGE_NAME} completed <<<<<<<<\n\nx==========x")
 except Exception as e:
     logger.exception(e)
     raise e

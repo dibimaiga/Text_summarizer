@@ -13,3 +13,33 @@ class DataValidationConfig:
     root_dir: Path
     status_file: str
     all_required_files: list
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    data_path: Path
+    tokenizer_name: Path
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    data_path: Path
+    model_checkpoint: Path
+    num_train_epochs: int
+    warmup_steps: int
+    weight_decay: float
+    per_device_train_batch_size: int
+    logging_steps: int
+    eval_strategy: str
+    eval_steps: int
+    save_steps: float
+    gradient_accumulation_steps: int
+
+@dataclass(frozen=True)
+
+class ModelEvaluationConfig:
+    root_dir: Path
+    data_path: Path
+    model_path: Path
+    tokenizer_path: Path
+    metrics_file: Path
